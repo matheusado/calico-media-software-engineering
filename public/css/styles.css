@@ -746,6 +746,149 @@ img {
   padding-top: 24px;
 }
 
+/* The hero is built as a 496px text column plus a fixed 600px image.
+   That pair only fits once the container reaches its 1200px max.
+   Below that, stack it. column-reverse puts the image (second in
+   the HTML) above the heading. */
+@media (max-width: 1199px) {
+  .hero-inner {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .hero-media {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
+/* Home nav is nowrap with min-width: 0, so links shrink and paint
+   on top of each other once the row is narrower than its text.
+   On tablet, center the logo and let the links wrap in a centered row. */
+@media (max-width: 1024px) {
+  .site-header--home .container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 32px;
+    padding-bottom: 16px;
+  }
+
+  .site-header--home nav {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .site-header--home .nav-links {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    row-gap: 12px;
+    column-gap: 12px;
+  }
+
+  .site-header--home .nav-links li {
+    flex-shrink: 0;
+    min-width: max-content;
+  }
+
+  .site-header--home .nav-links a {
+    padding: 10px 6px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .site-header--home .nav-links li:last-child {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .site-header--home .nav-links .btn {
+    margin-left: 0;
+    padding: 12px 26px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .hero {
+    padding-top: 16px;
+    padding-bottom: 48px;
+  }
+
+  .hero-actions {
+    margin-top: 48px;
+  }
+
+  .cta-body {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 32px;
+  }
+
+  .cta-body h2 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .cta-body .btn {
+    align-self: center;
+  }
+
+  .site-header--home ~ main .section:last-of-type {
+    padding-bottom: 32px;
+  }
+
+  .site-header--home ~ .site-footer {
+    margin-top: 48px;
+  }
+
+  .site-header--home ~ .site-footer .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 48px 32px;
+  }
+
+  .site-header--home ~ .site-footer .logo {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .site-header--home ~ .site-footer h4 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .site-header--home ~ .site-footer li {
+    margin-bottom: 12px;
+  }
+
+  .site-header--home ~ .site-footer li a {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .site-header--home ~ .site-footer .footer-grid p,
+  .site-header--home ~ .site-footer .footer-bottom p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .site-header--home ~ .site-footer .footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+  }
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 40px;
@@ -769,6 +912,10 @@ img {
     order: 0;
   }
 
+  .playbook-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -788,12 +935,125 @@ img {
     font-size: 34px;
   }
 
+  .playbook-grid {
+    grid-template-columns: 1fr;
+  }
+
   .card-grid {
     grid-template-columns: 1fr;
   }
 
   .cta-body {
+    flex-direction: column;
+    align-items: flex-start;
     padding: 32px 24px;
+    row-gap: 24px;
+  }
+
+  .cta-body h2 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .cta-body .btn {
+    align-self: center;
+  }
+
+  .site-header--home ~ main .section:last-of-type {
+    padding-bottom: 64px;
+  }
+
+  .site-header--home ~ .site-footer {
+    margin-top: 96px;
+  }
+
+  .site-header--home .container {
+    row-gap: 32px;
+    padding-bottom: 16px;
+  }
+
+  .hero {
+    padding-top: 16px;
+    padding-bottom: 88px;
+  }
+
+  .hero-actions {
+    margin-top: 32px;
+  }
+
+  .site-header--home .nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 24px;
+    width: 100%;
+  }
+
+  .site-header--home .nav-links li {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .site-header--home .nav-links a {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+    min-height: 44px;
+    padding: 8px 4px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .site-header--home .nav-links li:last-child {
+    flex-basis: auto;
+    display: block;
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .site-header--home .nav-links .btn {
+    display: inline-block;
+    width: auto;
+    min-height: 0;
+    padding: 12px 26px;
+    font-size: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .site-header--home ~ .site-footer .footer-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .site-header--home ~ .site-footer .logo {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .site-header--home ~ .site-footer h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .site-header--home ~ .site-footer li {
+    margin-bottom: 14px;
+  }
+
+  .site-header--home ~ .site-footer li a {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .site-header--home ~ .site-footer .footer-bottom {
+    text-align: center;
+    margin-top: 48px;
   }
 
   .footer-grid {
